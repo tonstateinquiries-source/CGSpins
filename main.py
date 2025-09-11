@@ -312,6 +312,11 @@ dp = Dispatcher()
 router = Router()
 dp.include_router(router)
 
+# Validate environment variables
+if not config.validate_environment():
+    print("❌ Environment validation failed. Exiting...")
+    exit(1)
+
 # Simple in-memory storage for testing
 user_data = defaultdict(lambda: {
     "balance": 1000,  # Starting balance

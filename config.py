@@ -4,16 +4,27 @@ import os
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 TON_WALLET_ADDRESS = os.getenv("TON_WALLET_ADDRESS", "")
 
-# Validate required environment variables
-if not BOT_TOKEN:
-    print("❌ ERROR: BOT_TOKEN environment variable is not set!")
-    print("Please set BOT_TOKEN in Railway environment variables")
-    exit(1)
-
-if not TON_WALLET_ADDRESS:
-    print("❌ ERROR: TON_WALLET_ADDRESS environment variable is not set!")
-    print("Please set TON_WALLET_ADDRESS in Railway environment variables")
-    exit(1)
+# Function to validate environment variables
+def validate_environment():
+    """Validate that all required environment variables are set"""
+    print("🔍 [Config] Validating environment variables...")
+    print(f"🔍 [Config] BOT_TOKEN: {'SET' if BOT_TOKEN else 'NOT SET'}")
+    print(f"🔍 [Config] TON_WALLET_ADDRESS: {'SET' if TON_WALLET_ADDRESS else 'NOT SET'}")
+    print(f"🔍 [Config] TON_API_KEY: {'SET' if os.getenv('TON_API_KEY') else 'NOT SET'}")
+    print(f"🔍 [Config] ADMIN_USER_IDS: {os.getenv('ADMIN_USER_IDS', 'NOT SET')}")
+    
+    if not BOT_TOKEN:
+        print("❌ ERROR: BOT_TOKEN environment variable is not set!")
+        print("Please set BOT_TOKEN in Railway environment variables")
+        return False
+    
+    if not TON_WALLET_ADDRESS:
+        print("❌ ERROR: TON_WALLET_ADDRESS environment variable is not set!")
+        print("Please set TON_WALLET_ADDRESS in Railway environment variables")
+        return False
+    
+    print("✅ Environment variables validated successfully")
+    return True
 
 # Admin Configuration
 ADMIN_USER_IDS = [
