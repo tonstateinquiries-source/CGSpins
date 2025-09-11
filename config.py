@@ -7,25 +7,6 @@ TON_WALLET_ADDRESS = os.getenv("TON_WALLET_ADDRESS", "")
 # Function to validate environment variables
 def validate_environment():
     """Validate that all required environment variables are set"""
-    print("🔍 [Config] Validating environment variables...")
-    
-    # Show masked values for debugging
-    bot_token_masked = f"{BOT_TOKEN[:10]}..." if BOT_TOKEN and len(BOT_TOKEN) > 10 else BOT_TOKEN
-    ton_wallet_masked = f"{TON_WALLET_ADDRESS[:10]}..." if TON_WALLET_ADDRESS and len(TON_WALLET_ADDRESS) > 10 else TON_WALLET_ADDRESS
-    ton_api_masked = f"{os.getenv('TON_API_KEY', '')[:10]}..." if os.getenv('TON_API_KEY') and len(os.getenv('TON_API_KEY', '')) > 10 else os.getenv('TON_API_KEY', '')
-    
-    print(f"🔍 [Config] BOT_TOKEN: {'SET' if BOT_TOKEN else 'NOT SET'} ({bot_token_masked})")
-    print(f"🔍 [Config] TON_WALLET_ADDRESS: {'SET' if TON_WALLET_ADDRESS else 'NOT SET'} ({ton_wallet_masked})")
-    print(f"🔍 [Config] TON_API_KEY: {'SET' if os.getenv('TON_API_KEY') else 'NOT SET'} ({ton_api_masked})")
-    print(f"🔍 [Config] ADMIN_USER_IDS: {os.getenv('ADMIN_USER_IDS', 'NOT SET')}")
-    
-    # Show all environment variables that start with BOT, TON, or ADMIN
-    print("🔍 [Config] All relevant environment variables:")
-    for key, value in os.environ.items():
-        if any(prefix in key.upper() for prefix in ['BOT', 'TON', 'ADMIN']):
-            masked_value = f"{value[:10]}..." if value and len(value) > 10 else value
-            print(f"  {key}: {masked_value}")
-    
     if not BOT_TOKEN:
         print("❌ ERROR: BOT_TOKEN environment variable is not set!")
         print("Please set BOT_TOKEN in Railway environment variables")

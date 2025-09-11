@@ -317,7 +317,6 @@ try:
     print("✅ Bot initialized successfully")
 except Exception as e:
     print(f"❌ Failed to initialize bot: {e}")
-    print(f"❌ BOT_TOKEN value: '{config.BOT_TOKEN}'")
     exit(1)
 
 dp = Dispatcher()
