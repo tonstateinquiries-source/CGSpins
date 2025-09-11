@@ -4,6 +4,17 @@ import os
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 TON_WALLET_ADDRESS = os.getenv("TON_WALLET_ADDRESS", "")
 
+# Validate required environment variables
+if not BOT_TOKEN:
+    print("❌ ERROR: BOT_TOKEN environment variable is not set!")
+    print("Please set BOT_TOKEN in Railway environment variables")
+    exit(1)
+
+if not TON_WALLET_ADDRESS:
+    print("❌ ERROR: TON_WALLET_ADDRESS environment variable is not set!")
+    print("Please set TON_WALLET_ADDRESS in Railway environment variables")
+    exit(1)
+
 # Admin Configuration
 ADMIN_USER_IDS = [
     int(x) for x in os.getenv("ADMIN_USER_IDS", "8059922747").split(",")
