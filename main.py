@@ -306,16 +306,23 @@ def update_user_username(user_id: int, username: str) -> bool:
         return False
 
 
-# Initialize bot and dispatcher
-bot = Bot(token=config.BOT_TOKEN)
-dp = Dispatcher()
-router = Router()
-dp.include_router(router)
-
-# Validate environment variables
+# Validate environment variables first
 if not config.validate_environment():
     print("❌ Environment validation failed. Exiting...")
     exit(1)
+
+# Initialize bot and dispatcher after validation
+try:
+    bot = Bot(token=config.BOT_TOKEN)
+    print("✅ Bot initialized successfully")
+except Exception as e:
+    print(f"❌ Failed to initialize bot: {e}")
+    print(f"❌ BOT_TOKEN value: '{config.BOT_TOKEN}'")
+    exit(1)
+
+dp = Dispatcher()
+router = Router()
+dp.include_router(router)
 
 # Simple in-memory storage for testing
 user_data = defaultdict(lambda: {
