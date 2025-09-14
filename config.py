@@ -294,10 +294,14 @@ INFLUENCERS = {
     1234567892: {"tier": 2, "commission_rate": 0.25, "name": "Influencer Name 3"},
     1234567893: {"tier": 2, "commission_rate": 0.25, "name": "Influencer Name 4"},
     7911623970: {"tier": 2, "commission_rate": 0.25, "name": "Influencer 7911623970"},
+    
+    # Tier 3: 50% commission
+    7847504289: {"tier": 3, "commission_rate": 0.50, "name": "Influencer 7847504289"},
 }
 
 # Influencer Commission Rates by Tier
 INFLUENCER_COMMISSION_RATES = {
     1: 0.15,  # 15% commission
     2: 0.25,  # 25% commission
+    3: 0.50,  # 50% commission
 }
