@@ -37,6 +37,7 @@ HIT_POINTS = 10  # Points awarded for each 777 hit
 
 # Payment Conversion Rates
 STARS_TO_TON_RATE = 0.004836  # 1 Star = 0.004836 TON (100 Stars = 0.4836 TON)
+TON_TO_USD_RATE = 3.0  # 1 TON = $3.00 (2 TON = $6.00)
 
 PACKAGE_SPINS = {
     "bronze": 30,
